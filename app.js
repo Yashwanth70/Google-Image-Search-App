@@ -17,10 +17,12 @@ var scraper = require('./routes/scraper.js');
 
 var mongoose = config.myConfig();
 var image_record,x = schema_config.mySchema(mongoose);
-
+var base64Img = require('base64-img');
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -75,7 +77,13 @@ app.all('/getimages/:name',function(req,res){
 
 //CHECKS IF KEYWORD EXISTS OR NOT
 app.post('/main', function(req, res){
-
+		//checking
+		var url = 'https://aamboceanservice.blob.core.windows.net/oceanservice-prod/facts/ocean-human-health.jpg';
+			base64Img.requestBase64(url, function(err, res, body) {
+				if(err) console.log("Yash");
+			  console.log(res);
+		});
+		//
 		var keyword = req.body.keyword
 		console.log(keyword)
 		var find_keyword_instance = mongoose.model('image_model', image_record);
