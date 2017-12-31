@@ -19,6 +19,7 @@ exports.myScraper = function(keyword,db_instance,res){
 				}
 			})
 			.then(function (result) {
+							console.log(result);
 							async.each(result, function (item, callback) {
 							var current_url = item.url;
 							var loc_save_name = keyword + "-" + i + ".png";	
