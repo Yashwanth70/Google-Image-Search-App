@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<h5>Search for google images</h5>
+	<form method='post' action="/main" >
+		<input type="text" name="keyword" value="">
+		<input type="submit" name="submit" onclick="status_msg();">
+	</form>
+<h3 id="status"></h3>
+<script>	
+function status_msg()
+{
+    document.getElementById("status").innerHTML = "Please wait! You'll be redirected once the images have been processed and downloaded.";
+}
+
+</script>	
+</body>
+<a href="/history">View Searches Words</a>
+</html>

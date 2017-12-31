@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Searched Keywords are:</p>
+
+<ul>
+  <li ng-repeat="x in myData track by $index">
+  <a href="/images?{{x}}">
+    {{ x }}
+
+  </li>
+</ul>
+	{{arrayToString(myData)}}
+</div>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("/keywordlist")
+  .then(function(response) {
+      $scope.myData = response.data;
+      console.log(response.data);
+  });
+});
+</script>
+
+</body>
+</html>
