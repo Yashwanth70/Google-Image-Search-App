@@ -77,13 +77,6 @@ app.all('/getimages/:name',function(req,res){
 
 //CHECKS IF KEYWORD EXISTS OR NOT
 app.post('/main', function(req, res){
-		//checking
-		var url = 'https://aamboceanservice.blob.core.windows.net/oceanservice-prod/facts/ocean-human-health.jpg';
-			base64Img.requestBase64(url, function(err, res, body) {
-				if(err) console.log("Yash");
-			  console.log(res);
-		});
-		//
 		var keyword = req.body.keyword
 		console.log(keyword)
 		var find_keyword_instance = mongoose.model('image_model', image_record);
